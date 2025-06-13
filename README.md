@@ -1,9 +1,7 @@
 # Idk what just happened
 
-I swear I didn’t touch anything.
+Something weird is going on here...  
+Commits keep appearing like magic.  
 
-But the commits keep coming.  
-Maybe the repo is haunted? 👻
-
-If you see this, just go with it.  
-Or blame the bots 🤖.
+Don’t ask me, I’m just the code. 🤷‍♂️  
+Maybe the robots are partying. 🤖🎉
