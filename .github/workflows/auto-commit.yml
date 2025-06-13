@@ -1,0 +1,41 @@
+name: YasinDev GitHub Auto Commits
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Every hour
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Loop Auto Commits
+        run: |
+          FILE=".github/HACK.md"
+          COMMIT_LOOP_COUNT=500
+
+          git config --global user.name "$USERNAME"
+          git config --global user.email "$EMAIL"
+
+          for ((i=1; i<=COMMIT_LOOP_COUNT; i++)); do
+            echo "### Auto Commit #$i" >> $FILE
+            date >> $FILE
+            echo "Commit number: $i" >> $FILE
+            echo "---" >> $FILE
+
+            git add $FILE
+            git commit -m "🤖 Auto Commit #$i" --allow-empty
+          done
+
+          git pull --rebase
+          git push
+        shell: bash
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          EMAIL: ${{ secrets.EMAIL }}

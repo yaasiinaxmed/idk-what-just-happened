@@ -1,0 +1,6 @@
+/node_modules
+index.js
+package-lock.json
+package.json
+loop.sh
+# Ignore all files in the root directory except for the loop.sh file

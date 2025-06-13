@@ -26,8 +26,8 @@ const makeCommits = (n, callback) => {
       return simpleGit().push().then(callback);
     }
   
-    // Random year from 1970 to 2025
-    const year = random.int(1970, 2025);
+    // Random year from 2010 to 2025
+    const year = random.int(2010, 2025);
     const week = random.int(0, 51);
     const day = random.int(0, 6);
   
@@ -56,7 +56,7 @@ const makeCommits = (n, callback) => {
 // Main run function
 const run = () => {
   printBanner();
-  makeCommits(100, () => {
+  makeCommits(600, () => {
     console.log(divider);
     console.log(blink(green("💾 Done. Sleeping 5 seconds before next round...")));
     setTimeout(run, 5000); // Repeat every 5s
