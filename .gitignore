@@ -1,8 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/res.md
+node_modules/
 
+# project files to ignore
 index.js
 loop.sh
+
