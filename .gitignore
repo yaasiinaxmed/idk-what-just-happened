@@ -1,6 +1,11 @@
-/node_modules
-index.js
+# Ignore dependencies
+node_modules/
+
+# Ignore build or temp files
 package-lock.json
 package.json
+index.js
+data.json
+
+# Ignore bash script if you want (optional)
 loop.sh
-# Ignore all files in the root directory except for the loop.sh file
