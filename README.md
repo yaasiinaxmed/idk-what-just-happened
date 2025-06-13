@@ -63,22 +63,6 @@ node index.js
 
 ---
 
-## 🔁 loop.sh (optional)
-
-Here’s how the `loop.sh` script works:
-
-```bash
-#!/bin/bash
-
-while true
-do
-  echo "Running index.js..."
-  node index.js
-  echo "Waiting 5 seconds before next run..."
-  sleep 5
-done
-```
-
 ---
 
 ## 🎨 Contribution Graph Result
