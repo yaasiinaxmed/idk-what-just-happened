@@ -1,80 +1,114 @@
-# 🧠 YasinDev - Auto Commit Timeline
+# 🧠 Git Time Traveler - by YasinDev
+![Badge](https://img.shields.io/badge/years-2010--2025-blue?style=flat-square)
 
-This repo is **just for fun and learning**. It automatically generates random commits every hour using GitHub Actions, to create a beautiful GitHub contribution graph.
-
-> 🎯 Inspired by hacker aesthetics, automation, and timeline art!
-
----
-
-## 💡 What It Does
-
-- Uses GitHub Actions to generate commits on `README.md`
-- Runs hourly (`cron: "0 * * * *"`)
-- Makes up to 50 commits per run (configurable)
-- Commits include time, count, and a touch of fun
+> Hack the GitHub timeline. Fill your contribution graph with glorious green squares — from 2010 to 2025! 🟩🟩🟩
 
 ---
 
-## 🚀 How It Works
+## 🚀 What is this?
 
-1. GitHub Action triggers every hour
-2. A loop modifies `README.md` with new content
-3. Commits are pushed with bot-like messages
-4. Contributions show up on your GitHub profile
+A fun Node.js script that generates hundreds of Git commits **from the past** — randomly spread between **1970 and 2025**.  
+Perfect for building a legendary GitHub contribution graph, experimenting with Git, or just for memes 😎
 
 ---
 
-## 🛠 Setup Instructions
+## 🧙 How It Works
 
-### 1. Create Secrets
+- Uses [`simple-git`](https://github.com/steveukx/git-js) to commit changes
+- Fake dates are generated using [`moment`](https://momentjs.com/) and [`random`](https://www.npmjs.com/package/random)
+- ASCII terminal banner using [`figlet`](https://www.npmjs.com/package/figlet)
+- Shell loop (`loop.sh`) keeps it running automatically
+- Pushes every 500 commits, sleeps for 5s, and repeats 🔁
 
-Go to your GitHub repo → ⚙️ **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
+---
 
-- `USERNAME` → `YasinDev`
-- `EMAIL` → `bot@yasin.dev`
+## 📦 Tech Stack
 
-### 2. Add the Workflow
+- Node.js
+- `simple-git`
+- `moment`
+- `jsonfile`
+- `random`
+- `figlet`
+- Bash (`loop.sh`)
 
-Place this inside: `.github/workflows/auto-commits.yml`
+---
 
-```yaml
-name: YasinDev GitHub Auto Commits
+## 🛠 Installation
 
-on:
-  schedule:
-    - cron: "0 * * * *"  # Every hour
-  workflow_dispatch:
+```bash
+git clone https://github.com/YOUR_USERNAME/git-time-traveler
+cd git-time-traveler
+npm install
+````
 
-jobs:
-  commit:
-    runs-on: ubuntu-latest
+---
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 2
+## ▶️ Run It
 
-      - name: Loop Auto Commits
-        run: |
-          FILE="README.md"
-          COMMIT_LOOP_COUNT=50
+To run the infinite commit loop:
 
-          git config --global user.name "$USERNAME"
-          git config --global user.email "$EMAIL"
+``` 
+chmod +x loop.sh
+./loop.sh
 
-          for ((i=1; i<=COMMIT_LOOP_COUNT; i++)); do
-            echo "Auto Commit #$i" > $FILE
-            date >> $FILE
-            echo "Commit number: $i" >> $FILE
+```
 
-            git add $FILE
-            git commit -m "🤖 Auto Commit #$i" --allow-empty
-          done
+Or run once:
 
-          git pull --rebase
-          git push
-        shell: bash
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
-          EMAIL: ${{ secrets.EMAIL }}
+```
+
+node index.js
+```
+
+---
+
+## 🔁 loop.sh (optional)
+
+Here’s how the `loop.sh` script works:
+
+```bash
+#!/bin/bash
+
+while true
+do
+  echo "Running index.js..."
+  node index.js
+  echo "Waiting 5 seconds before next run..."
+  sleep 5
+done
+```
+
+---
+
+## 🎨 Contribution Graph Result
+
+Eventually, your GitHub profile will show a contribution graph like this:
+
+```
+🟩🟩⬜️⬜️🟩🟩⬜️⬜️
+⬜️🟩🟩⬜️⬜️⬜️⬜️⬜️
+🟩⬜️🟩⬜️🟩🟩⬜️⬜️
+```
+
+> Green squares are power 💚
+
+---
+
+## 🤡 Why?
+
+This project is for fun, memes, and learning Git internals.
+Use it wisely and ethically — not to fake your real dev history.
+
+---
+
+## 🧑‍💻 Made by
+
+**YasinDev**
+→ [github.com/yaasiinaxmed](https://github.com/yaasiinaxmed)
+
+---
+
+## 📜 License
+
+MIT – Free to use, remix, or modify. Just don’t blame me when your graph gets too green 🔥
